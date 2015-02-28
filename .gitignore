@@ -59,4 +59,4 @@ db.sqlite3
 *.orig
 /migrations
 
-/statifiles
+/staticfiles
