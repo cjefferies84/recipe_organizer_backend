@@ -56,6 +56,12 @@ ROOT_URLCONF = 'recipe_organizer.urls'
 
 WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 
+MEDIA_ROOT = '/Users/cjefferies/dev/recipe_organizer/backend/app/recipes/media'
+
+MEDIA_URL = '/media/'
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -83,6 +89,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+
+STATIC_ROOT = 'staticfiles'
 
 STATIC_URL = '/static/'
 
