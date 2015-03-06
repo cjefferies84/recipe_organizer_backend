@@ -7,3 +7,5 @@ urlpatterns = patterns('',
 
     url(r'^', include('apps.recipes.urls')),
 )
+
+
