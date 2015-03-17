@@ -35,7 +35,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class RecipeSerializer(serializers.ModelSerializer):
-    ingredients = IngredientSerializer(many=True, read_only=True)
+    ingredients = IngredientSerializer(many=True)
     # reviews = serializers.SerializerMethodField()
     # comments = serializers.SerializerMethodField()
     tags = TagSerializer(many=True)
@@ -48,20 +48,10 @@ class RecipeSerializer(serializers.ModelSerializer):
         tags_data = validated_data.pop('tags')
         recipe = Recipe.objects.create(**validated_data)
         for ingredient in ingredients_data:
-            try:
-                ingredient = Ingredient.objects.get(name=ingredient["name"])
-            except Ingredient.DoesNotExist:
-                ingredient = Ingredient.objects.create(**ingredient)
+            ingredient, created = Ingredient.objects.get_or_create(name=ingredient["name"])
             recipe.ingredients.add(ingredient)
 
         for tag in tags_data:
-            try:
-                tag = Tag.objects.get(name=tag["name"])
-            except Tag.DoesNotExist:
-                tag = Tag.objects.create()
+            tag, created = Tag.objects.get_or_create(name=tag["name"])
             recipe.tags.add(tag)
         return recipe
-
-
-
-
