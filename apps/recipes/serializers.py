@@ -35,7 +35,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class RecipeSerializer(serializers.ModelSerializer):
-    ingredients = IngredientSerializer(many=True, read_only=True)
+    ingredients = IngredientSerializer(many=True)
     # reviews = serializers.SerializerMethodField()
     # comments = serializers.SerializerMethodField()
     tags = TagSerializer(many=True)
@@ -61,7 +61,3 @@ class RecipeSerializer(serializers.ModelSerializer):
                 tag = Tag.objects.create()
             recipe.tags.add(tag)
         return recipe
-
-
-
-

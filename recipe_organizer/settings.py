@@ -58,7 +58,7 @@ WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 
 MEDIA_ROOT = BASE_DIR + '/media'
 
-MEDIA_URL = '/api/media/'
+MEDIA_URL = '/media/'
 
 
 
