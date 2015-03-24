@@ -56,9 +56,9 @@ ROOT_URLCONF = 'recipe_organizer.urls'
 
 WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 
-MEDIA_ROOT = BASE_DIR + '/media'
+MEDIA_ROOT = BASE_DIR + '/Users/cjefferies/dev/recipe_organizer/backend/media'
 
-MEDIA_URL = '/api/media/'
+MEDIA_URL = '/media'
 
 
 
