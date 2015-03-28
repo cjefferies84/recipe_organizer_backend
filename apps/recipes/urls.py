@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from django.conf import settings
+from recipe_organizer.settings import MEDIA_ROOT
 from views import *
 
 

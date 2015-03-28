@@ -56,7 +56,7 @@ ROOT_URLCONF = 'recipe_organizer.urls'
 
 WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 
-MEDIA_ROOT = BASE_DIR + '/Users/cjefferies/dev/recipe_organizer/backend/media'
+MEDIA_ROOT = BASE_DIR + '/var/www/cjeffferies.me/recipe_organizer/backend/media'
 
 MEDIA_URL = '/media'
 
@@ -97,6 +97,7 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
     'localhost/',
+    'cjefferies.me'
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
