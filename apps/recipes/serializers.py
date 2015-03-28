@@ -35,7 +35,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class RecipeSerializer(serializers.ModelSerializer):
-    ingredients = IngredientSerializer(many=True)
+    # ingredients = IngredientSerializer(many=True)
     # reviews = serializers.SerializerMethodField()
     # comments = serializers.SerializerMethodField()
     tags = TagSerializer(many=True)
@@ -43,15 +43,15 @@ class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
 
-    def create(self, validated_data):
-        ingredients_data = validated_data.pop('ingredients')
-        tags_data = validated_data.pop('tags')
-        recipe = Recipe.objects.create(**validated_data)
-        for ingredient in ingredients_data:
-            ingredient, created = Ingredient.objects.get_or_create(name=ingredient["name"])
-            recipe.ingredients.add(ingredient)
-
-        for tag in tags_data:
-            tag, created = Tag.objects.get_or_create(name=tag["name"])
-            recipe.tags.add(tag)
-        return recipe
+    # def create(self, validated_data):
+    #     ingredients_data = validated_data.pop('ingredients')
+    #     tags_data = validated_data.pop('tags')
+    #     recipe = Recipe.objects.create(**validated_data)
+    #     for ingredient in ingredients_data:
+    #         ingredient, created = Ingredient.objects.get_or_create(name=ingredient["name"])
+    #         recipe.ingredients.add(ingredient)
+    #
+    #     for tag in tags_data:
+    #         tag, created = Tag.objects.get_or_create(name=tag["name"])
+    #         recipe.tags.add(tag)
+    #     return recipe

@@ -58,7 +58,7 @@ WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 
 MEDIA_ROOT = BASE_DIR + '/var/www/cjeffferies.me/recipe_organizer/backend/media'
 
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 
 
 
@@ -90,7 +90,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = '/var/www/cjefferies.me/recipe_organizer/backend/staticfiles'
 
 STATIC_URL = '/static/'
 
