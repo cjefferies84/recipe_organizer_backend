@@ -38,14 +38,14 @@ class RecipeSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(many=True)
     # reviews = serializers.SerializerMethodField()
     # comments = serializers.SerializerMethodField()
-    tags = TagSerializer(many=True)
+    # tags = TagSerializer(many=True)
 
     class Meta:
         model = Recipe
 
     def create(self, validated_data):
         ingredients_data = validated_data.pop('ingredients')
-        tags_data = validated_data.pop('tags')
+        # tags_data = validated_data.pop('tags')
         recipe = Recipe.objects.create(**validated_data)
         for ingredient in ingredients_data:
             try:
@@ -54,10 +54,27 @@ class RecipeSerializer(serializers.ModelSerializer):
                 ingredient = Ingredient.objects.create(**ingredient)
             recipe.ingredients.add(ingredient)
 
-        for tag in tags_data:
-            try:
-                tag = Tag.objects.get(name=tag["name"])
-            except Tag.DoesNotExist:
-                tag = Tag.objects.create()
-            recipe.tags.add(tag)
+        # for tag in tags_data:
+        #     try:
+        #         tag = Tag.objects.get(name=tag["name"])
+        #     except Tag.DoesNotExist:
+        #         tag = Tag.objects.create()
+        #     recipe.tags.add(tag)
         return recipe
+
+    def update(self, instance, validated_data):
+        ingredients_data = validated_data.pop('ingredients')
+
+        instance.name = validated_data.get('name', instance.name)
+        instance.description = validated_data.get('description', instance.description)
+        instance.directions = validated_data.get('directions', instance.directions)
+        instance.photo = validated_data.get('photo', instance.photo)
+
+        ingredients_list = []
+
+        for ingredient in ingredients_data:
+            ingredient, created = Ingredient.objects.get_or_create(name=ingredient["name"])
+            ingredients_list.append(ingredient)
+            instance.ingredients = ingredients_list
+            instance.save()
+        return instance
